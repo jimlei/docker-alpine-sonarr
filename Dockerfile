@@ -2,7 +2,8 @@ FROM alpine:edge
 
 ENV LANG='en_US.UTF-8' \
     LANGUAGE='en_US.UTF-8' \
-    TERM='xterm'
+    TERM='xterm' \
+    VERSION='master'
 
 RUN echo http://dl-4.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && \
   apk -U upgrade && \
@@ -15,7 +16,7 @@ RUN echo http://dl-4.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositorie
   rm -rf /tmp/src && \
   rm -rf /var/cache/apk/*
 
-RUN wget http://download.sonarr.tv/v2/master/mono/NzbDrone.master.2.0.0.3732.mono.tar.gz -O NzbDrone.tgz && \
+RUN wget http://download.sonarr.tv/v2/master/mono/NzbDrone.master$VERSION.tar.gz -O NzbDrone.tgz && \
   tar xzvf NzbDrone.tgz && \
   rm NzbDrone.tgz
 
